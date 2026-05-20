@@ -11,15 +11,16 @@ export const SITE: Site = {
   postsPerPage: 3,
 }
 
+export const SHOW_AUTHORS = false
+
 export const NAV_LINKS: SocialLink[] = [
   {
     href: '/blog',
     label: 'blog',
   },
-  {
-    href: '/authors',
-    label: 'authors',
-  },
+  ...(SHOW_AUTHORS
+    ? [{ href: '/authors', label: 'authors' } as SocialLink]
+    : []),
   {
     href: '/about',
     label: 'about',

@@ -302,3 +302,10 @@ export async function getTOCSections(postId: string): Promise<TOCSection[]> {
 
   return sections
 }
+
+export async function getPostEntryNumber(postId: string): Promise<string> {
+  const posts = await getAllPosts()
+  const idx = posts.findIndex((p) => p.id === postId)
+  if (idx < 0) return '000'
+  return String(posts.length - idx).padStart(3, '0')
+}

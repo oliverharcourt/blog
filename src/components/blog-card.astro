@@ -2,8 +2,10 @@
 import AvatarComponent from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
+import { SHOW_AUTHORS } from '@/consts'
 import {
   getCombinedReadingTime,
+  getPostEntryNumber,
   getSubpostCount,
   isSubpost,
   parseAuthors,
@@ -23,10 +25,13 @@ const formattedDate = formatDate(entry.data.date)
 const readTime = await getCombinedReadingTime(entry.id)
 const authors = await parseAuthors(entry.data.authors ?? [])
 const subpostCount = !isSubpost(entry.id) ? await getSubpostCount(entry.id) : 0
+const entryNumber = !isSubpost(entry.id)
+  ? await getPostEntryNumber(entry.id)
+  : null
 ---
 
 <div
-  class="hover:bg-muted/50 rounded-xl border p-4 transition-colors duration-300 ease-in-out"
+  class="hud-frame hover:border-accent hover:bg-muted/30 border-4 p-4 transition-colors duration-300 ease-in-out"
 >
   <Link
     href={`/${entry.collection}/${entry.id}`}
@@ -47,14 +52,19 @@ const subpostCount = !isSubpost(entry.id) ? await getSubpostCount(entry.id) : 0
     }
 
     <div class="grow">
+      {entryNumber && (
+        <p class="text-muted-foreground mb-1 font-mono text-xs uppercase">
+          [LOG // {entryNumber}]
+        </p>
+      )}
       <h3 class="mb-1 text-lg font-medium">{entry.data.title}</h3>
       <p class="text-muted-foreground mb-2 text-sm">{entry.data.description}</p>
 
       <div
-        class="text-muted-foreground mb-2 flex flex-wrap items-center gap-x-2 text-xs"
+        class="text-muted-foreground mb-2 flex flex-wrap items-center gap-x-2 font-mono text-xs uppercase"
       >
         {
-          authors.length > 0 && (
+          SHOW_AUTHORS && authors.length > 0 && (
             <>
               {authors.map((author) => (
                 <div class="flex items-center gap-x-1.5">
@@ -72,16 +82,18 @@ const subpostCount = !isSubpost(entry.id) ? await getSubpostCount(entry.id) : 0
             </>
           )
         }
-        <span>{formattedDate}</span>
+        <span>[ {formattedDate} ]</span>
         <Separator orientation="vertical" className="h-4!" />
-        <span>{readTime}</span>
+        <span>[ {readTime} ]</span>
         {
           subpostCount > 0 && (
             <>
               <Separator orientation="vertical" className="h-4!" />
               <span class="flex items-center gap-1">
+                [
                 <Icon name="lucide:file-text" class="size-3" />
                 {subpostCount} subpost{subpostCount === 1 ? '' : 's'}
+                ]
               </span>
             </>
           )
