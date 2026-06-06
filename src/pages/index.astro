@@ -12,14 +12,25 @@ const blog = await getRecentPosts(SITE.featuredPostCount)
 
 <Layout class="max-w-3xl">
   <PageHead slot="head" title="Home" />
-  <section class="py-8 sm:py-16">
+  <section class="relative py-8 sm:py-16">
+    <span
+      class="text-accent/15 pointer-events-none absolute right-0 bottom-2 z-0 text-[5rem] leading-none whitespace-nowrap select-none sm:text-[7rem]"
+      style="font-family: 'Zen Antique', serif;"
+      aria-hidden="true">一日一歩</span
+    >
+    <p
+      class="text-muted-foreground relative z-10 mb-3 font-mono text-xs tracking-[0.3em] uppercase"
+    >
+      [ PERSONAL LOG // 2026 ]
+    </p>
     <h1
-      class="text-foreground font-mono lowercase tracking-tight text-4xl font-bold break-words sm:text-6xl"
+      class="text-foreground relative z-10 font-mono text-4xl font-bold tracking-tight break-words lowercase sm:text-6xl"
     >
       test title<span
         class="terminal-cursor"
         style="display: inline-block; color: var(--accent); margin-left: 0.1em; animation: terminal-blink 1s steps(1, end) infinite;"
-        aria-hidden="true">█</span>
+        aria-hidden="true">█</span
+      >
     </h1>
   </section>
 

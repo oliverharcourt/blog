@@ -32,6 +32,19 @@ const years = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a))
     ]}
   />
 
+  <header
+    class="border-accent mb-4 flex items-baseline justify-between border-b-2 pb-2"
+  >
+    <h1 class="text-4xl font-bold uppercase tracking-wider sm:text-6xl">
+      Index
+    </h1>
+    <span
+      class="text-muted-foreground font-mono text-xs uppercase tracking-widest"
+    >
+      [ ALL ENTRIES // {String(page.total).padStart(3, '0')} ]
+    </span>
+  </header>
+
   <div class="flex min-h-[calc(100vh-18rem)] flex-col gap-y-8">
     {
       years.map((year) => (

@@ -29,17 +29,17 @@ export const NAV_LINKS: SocialLink[] = [
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    href: 'https://github.com/jktrn',
+    href: 'https://github.com/oliverharcourt',
     label: 'GitHub',
   },
-  {
-    href: 'https://twitter.com/enscry',
-    label: 'Twitter',
-  },
-  {
-    href: 'mailto:jason@enscribe.dev',
-    label: 'Email',
-  },
+  // {
+  //   href: 'https://twitter.com/enscry',
+  //   label: 'Twitter',
+  // },
+  // {
+  //   href: 'mailto:jason@enscribe.dev',
+  //   label: 'Email',
+  // },
   {
     href: '/rss.xml',
     label: 'RSS',
