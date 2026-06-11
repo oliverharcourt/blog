@@ -6,7 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .env
-.env.production
+.env.*
 .DS_Store
 .idea/
 teaser.pptx
